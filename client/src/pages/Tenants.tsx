@@ -1,5 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
-import { Home, Wrench, CreditCard, MessageCircle } from "lucide-react";
+import { Home, Wrench, CreditCard, MessageCircle, CheckCircle, Shield } from "lucide-react";
 
 export default function Tenants() {
   const services = [
@@ -42,6 +42,64 @@ export default function Tenants() {
           <p className="text-lg text-gray-700 mb-8">Access your tenant portal to manage your lease, view payments, and submit maintenance requests.</p>
           <div className="flex gap-4 justify-center flex-wrap mb-12">
             <a href="/login" className="inline-block bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-semibold px-8 py-4 rounded-lg transition-colors">Tenant Login</a>
+          </div>
+        </div>
+      </section>
+
+      {/* Voucher Holders Section */}
+      <section className="py-20 bg-[var(--luxe-navy)] text-white">
+        <div className="container max-w-5xl">
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div>
+              <div className="inline-flex items-center gap-2 bg-[var(--luxe-gold)]/20 border border-[var(--luxe-gold)]/40 text-[var(--luxe-gold)] px-4 py-1.5 rounded-full text-sm font-semibold mb-5">
+                <CheckCircle className="w-4 h-4" /> Vouchers Welcome
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-5">
+                We Accept Housing Choice Vouchers
+              </h2>
+              <p className="text-white/80 text-lg mb-6">
+                Luxe Property Solutions proudly works with Housing Choice Voucher (HCV) holders, including Section 8, VASH, and other housing assistance programs. All of our properties are voucher-eligible.
+              </p>
+              <ul className="space-y-2 mb-8">
+                {["Section 8 / Housing Choice Voucher (HCV)", "VASH (Veterans Affairs Supportive Housing)", "Emergency Housing Vouchers (EHV)", "Other state and local assistance programs"].map((item) => (
+                  <li key={item} className="flex items-center gap-2 text-white/80">
+                    <CheckCircle className="w-4 h-4 text-[var(--luxe-gold)] flex-shrink-0" />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+              <div className="flex gap-4 flex-wrap">
+                <a href="/vouchers" className="inline-block bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-bold px-6 py-3 rounded-lg transition-colors">
+                  Voucher Holder Info
+                </a>
+                <a href="/apply" className="inline-block border-2 border-white/60 hover:border-white text-white font-semibold px-6 py-3 rounded-lg transition-colors">
+                  Apply Now
+                </a>
+              </div>
+            </div>
+            <div className="space-y-4">
+              <Card className="bg-white/10 border-white/20 text-white">
+                <CardContent className="p-5">
+                  <Shield className="w-8 h-8 text-[var(--luxe-gold)] mb-3" />
+                  <h3 className="font-bold text-lg mb-2">Fair Housing Commitment</h3>
+                  <p className="text-white/70 text-sm">We do not discriminate based on source of income. Voucher holders receive the same quality of service and access to properties as all other tenants.</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-white/10 border-white/20 text-white">
+                <CardContent className="p-5">
+                  <CheckCircle className="w-8 h-8 text-[var(--luxe-gold)] mb-3" />
+                  <h3 className="font-bold text-lg mb-2">HQS-Ready Properties</h3>
+                  <p className="text-white/70 text-sm">Our properties are maintained to exceed Housing Quality Standards, making PHA inspections smooth and approvals fast.</p>
+                </CardContent>
+              </Card>
+              <Card className="bg-white/10 border-white/20 text-white">
+                <CardContent className="p-5">
+                  <CreditCard className="w-8 h-8 text-[var(--luxe-gold)] mb-3" />
+                  <h3 className="font-bold text-lg mb-2">PHA Coordination</h3>
+                  <p className="text-white/70 text-sm">Our leasing team handles all coordination with your PHA — from the RFTA form to HAP contract execution — so you can focus on your move.</p>
+                </CardContent>
+              </Card>
+            </div>
           </div>
         </div>
       </section>

@@ -243,6 +243,17 @@ export const rentalApplications = mysqlTable("rentalApplications", {
   hasBankruptcy: boolean("hasBankruptcy").default(false),
   bankruptcyDetails: text("bankruptcyDetails"),
 
+  // Voucher / Housing Assistance
+  hasVoucher: boolean("hasVoucher").default(false),
+  voucherType: mysqlEnum("voucherType", ["section8_hcv", "vash", "other"]),
+  phaName: varchar("phaName", { length: 255 }),
+  phaPhone: varchar("phaPhone", { length: 20 }),
+  phaEmail: varchar("phaEmail", { length: 320 }),
+  voucherNumber: varchar("voucherNumber", { length: 100 }),
+  voucherAmount: varchar("voucherAmount", { length: 20 }),
+  voucherBedrooms: varchar("voucherBedrooms", { length: 10 }),
+  voucherExpirationDate: varchar("voucherExpirationDate", { length: 20 }),
+
   // Payment & status
   applicationFee: decimal("applicationFee", { precision: 8, scale: 2 }).default("75.00"),
   paymentStatus: mysqlEnum("paymentStatus", ["pending", "paid", "refunded"]).default("pending"),

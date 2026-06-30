@@ -13,6 +13,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     { path: "/properties", label: "Properties" },
     { path: "/owners", label: "For Property Owners" },
     { path: "/tenants", label: "For Tenants" },
+    { path: "/vouchers", label: "Voucher Holders" },
     { path: "/contact", label: "Contact Us" },
   ];
 

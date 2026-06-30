@@ -121,6 +121,26 @@ function ApplicationRow({ app }: { app: any }) {
               </div>
             )}
 
+            {/* Voucher */}
+            {app.hasVoucher && (
+              <div>
+                <h4 className="font-bold text-[var(--luxe-navy)] mb-2">
+                  <span className="inline-flex items-center gap-1">
+                    Housing Voucher
+                    <span className="ml-1 text-xs bg-green-100 text-green-700 px-2 py-0.5 rounded-full font-semibold">Active</span>
+                  </span>
+                </h4>
+                <p><span className="text-gray-500">Type:</span> {(app.voucherType ?? "—").replace("section8_hcv", "Section 8 / HCV").replace("vash", "VASH").replace("other", "Other")}</p>
+                {app.phaName && <p><span className="text-gray-500">PHA:</span> {app.phaName}</p>}
+                {app.phaPhone && <p><span className="text-gray-500">PHA Phone:</span> {app.phaPhone}</p>}
+                {app.phaEmail && <p><span className="text-gray-500">PHA Email:</span> {app.phaEmail}</p>}
+                {app.voucherNumber && <p><span className="text-gray-500">Voucher #:</span> {app.voucherNumber}</p>}
+                {app.voucherAmount && <p><span className="text-gray-500">HAP Amount:</span> {app.voucherAmount}/mo</p>}
+                {app.voucherBedrooms && <p><span className="text-gray-500">Bedroom Size:</span> {app.voucherBedrooms === "0" ? "Studio" : `${app.voucherBedrooms} BR`}</p>}
+                {app.voucherExpirationDate && <p><span className="text-gray-500">Expires:</span> {new Date(app.voucherExpirationDate).toLocaleDateString()}</p>}
+              </div>
+            )}
+
             {/* Background */}
             <div>
               <h4 className="font-bold text-[var(--luxe-navy)] mb-2">Background</h4>

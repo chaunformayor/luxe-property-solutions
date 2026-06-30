@@ -32,6 +32,7 @@ import OwnerLogin from "@/pages/OwnerLogin";
 import TenantLogin from "@/pages/TenantLogin";
 import Apply from "@/pages/Apply";
 import AdminApplications from "@/pages/AdminApplications";
+import Vouchers from "@/pages/Vouchers";
 
 function App() {
   return (
@@ -45,8 +46,11 @@ function App() {
             <Route path={"/owner-login"} component={OwnerLogin} />
             <Route path={"/admin-login"} component={AdminLogin} />
             
-            {/* Application Route */}
+            {/* Application & Voucher Routes */}
             <Route path={"/apply"} component={Apply} />
+            <Route path={"/vouchers"}>
+              <Vouchers />
+            </Route>
 
             {/* Admin Routes */}
             <Route path={"/admin"} component={AdminDashboard} />

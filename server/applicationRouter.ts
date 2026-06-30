@@ -86,6 +86,17 @@ const applicationInputSchema = z.object({
   criminalDetails: z.string().optional(),
   hasBankruptcy: z.boolean().default(false),
   bankruptcyDetails: z.string().optional(),
+
+  // Voucher / Housing Assistance
+  hasVoucher: z.boolean().default(false),
+  voucherType: z.enum(["section8_hcv", "vash", "other"]).optional(),
+  phaName: z.string().optional(),
+  phaPhone: z.string().optional(),
+  phaEmail: z.string().optional(),
+  voucherNumber: z.string().optional(),
+  voucherAmount: z.string().optional(),
+  voucherBedrooms: z.string().optional(),
+  voucherExpirationDate: z.string().optional(),
 });
 
 export const applicationRouter = router({

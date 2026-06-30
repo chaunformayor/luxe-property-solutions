@@ -1,4 +1,5 @@
 import { Card, CardContent } from "@/components/ui/card";
+import { CheckCircle } from "lucide-react";
 
 export default function Properties() {
   return (
@@ -15,6 +16,14 @@ export default function Properties() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-4xl font-bold text-[var(--luxe-navy)] mb-6">Featured Properties Under Management</h2>
             <p className="text-lg text-gray-700">We manage a diverse portfolio of premium residential and commercial properties, each maintained to the highest standards.</p>
+          </div>
+
+          <div className="flex justify-center mb-8">
+            <div className="inline-flex items-center gap-2 bg-green-50 border border-green-200 text-green-800 px-5 py-2.5 rounded-full text-sm font-semibold">
+              <CheckCircle className="w-4 h-4 text-green-600" />
+              All properties accept Housing Choice Vouchers (Section 8) &mdash;
+              <a href="/vouchers" className="underline hover:text-green-900">Learn more</a>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

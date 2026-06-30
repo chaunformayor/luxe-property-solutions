@@ -85,6 +85,17 @@ type FormData = {
   criminalDetails: string;
   hasBankruptcy: boolean;
   bankruptcyDetails: string;
+
+  // Voucher
+  hasVoucher: boolean;
+  voucherType: "section8_hcv" | "vash" | "other" | "";
+  phaName: string;
+  phaPhone: string;
+  phaEmail: string;
+  voucherNumber: string;
+  voucherAmount: string;
+  voucherBedrooms: string;
+  voucherExpirationDate: string;
 };
 
 const defaultForm: FormData = {
@@ -101,6 +112,8 @@ const defaultForm: FormData = {
   hasEviction: false, evictionDetails: "",
   hasCriminalHistory: false, criminalDetails: "",
   hasBankruptcy: false, bankruptcyDetails: "",
+  hasVoucher: false, voucherType: "", phaName: "", phaPhone: "", phaEmail: "",
+  voucherNumber: "", voucherAmount: "", voucherBedrooms: "", voucherExpirationDate: "",
 };
 
 function FieldLabel({ children, required }: { children: React.ReactNode; required?: boolean }) {
@@ -313,6 +326,15 @@ export default function Apply() {
         criminalDetails: form.criminalDetails || undefined,
         hasBankruptcy: form.hasBankruptcy,
         bankruptcyDetails: form.bankruptcyDetails || undefined,
+        hasVoucher: form.hasVoucher,
+        voucherType: form.hasVoucher && form.voucherType ? form.voucherType as "section8_hcv" | "vash" | "other" : undefined,
+        phaName: form.phaName || undefined,
+        phaPhone: form.phaPhone || undefined,
+        phaEmail: form.phaEmail || undefined,
+        voucherNumber: form.voucherNumber || undefined,
+        voucherAmount: form.voucherAmount || undefined,
+        voucherBedrooms: form.voucherBedrooms || undefined,
+        voucherExpirationDate: form.voucherExpirationDate || undefined,
       });
     } else {
       setStep((s) => s + 1);
@@ -594,6 +616,84 @@ export default function Apply() {
                         )}
                       </div>
                     ))}
+                  </div>
+
+                  {/* Voucher Section */}
+                  <div className="space-y-3">
+                    <h3 className="font-semibold text-gray-700">Housing Assistance Voucher</h3>
+                    <div className="border rounded-lg p-4">
+                      <div className="flex items-center gap-3 mb-3">
+                        <input
+                          type="checkbox"
+                          id="hasVoucher"
+                          checked={form.hasVoucher}
+                          onChange={(e) => setForm((prev) => ({ ...prev, hasVoucher: e.target.checked }))}
+                          className="w-4 h-4"
+                        />
+                        <label htmlFor="hasVoucher" className="font-medium text-gray-700 cursor-pointer">
+                          I have a Housing Choice Voucher (Section 8, VASH, or other)
+                        </label>
+                      </div>
+                      {form.hasVoucher && (
+                        <div className="space-y-4 mt-4 pt-4 border-t">
+                          <div className="grid sm:grid-cols-2 gap-4">
+                            <div>
+                              <FieldLabel required>Voucher Type</FieldLabel>
+                              <select className="w-full px-3 py-2 border rounded-md" value={form.voucherType} onChange={set("voucherType")}>
+                                <option value="">Select type...</option>
+                                <option value="section8_hcv">Section 8 / Housing Choice Voucher (HCV)</option>
+                                <option value="vash">VASH (Veterans Affairs Supportive Housing)</option>
+                                <option value="other">Other Housing Assistance</option>
+                              </select>
+                            </div>
+                            <div>
+                              <FieldLabel>Voucher Bedroom Size</FieldLabel>
+                              <select className="w-full px-3 py-2 border rounded-md" value={form.voucherBedrooms} onChange={set("voucherBedrooms")}>
+                                <option value="">Select...</option>
+                                <option value="0">Studio / Efficiency</option>
+                                <option value="1">1 Bedroom</option>
+                                <option value="2">2 Bedrooms</option>
+                                <option value="3">3 Bedrooms</option>
+                                <option value="4">4+ Bedrooms</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div className="grid sm:grid-cols-2 gap-4">
+                            <div>
+                              <FieldLabel>Public Housing Authority (PHA) Name</FieldLabel>
+                              <Input value={form.phaName} onChange={set("phaName")} placeholder="St. Louis Housing Authority" />
+                            </div>
+                            <div>
+                              <FieldLabel>PHA Phone Number</FieldLabel>
+                              <Input value={form.phaPhone} onChange={set("phaPhone")} placeholder="(314) 000-0000" />
+                            </div>
+                          </div>
+                          <div className="grid sm:grid-cols-2 gap-4">
+                            <div>
+                              <FieldLabel>PHA Email</FieldLabel>
+                              <Input type="email" value={form.phaEmail} onChange={set("phaEmail")} placeholder="caseworker@pha.gov" />
+                            </div>
+                            <div>
+                              <FieldLabel>Voucher Number</FieldLabel>
+                              <Input value={form.voucherNumber} onChange={set("voucherNumber")} placeholder="As shown on your voucher" />
+                            </div>
+                          </div>
+                          <div className="grid sm:grid-cols-2 gap-4">
+                            <div>
+                              <FieldLabel>Monthly Voucher Amount (HAP)</FieldLabel>
+                              <Input value={form.voucherAmount} onChange={set("voucherAmount")} placeholder="$1,100" />
+                            </div>
+                            <div>
+                              <FieldLabel>Voucher Expiration Date</FieldLabel>
+                              <Input type="date" value={form.voucherExpirationDate} onChange={set("voucherExpirationDate")} />
+                            </div>
+                          </div>
+                          <p className="text-xs text-gray-500 bg-blue-50 border border-blue-200 rounded p-3">
+                            Please have your Request for Tenancy Approval (RFTA) form ready. Our team will contact your PHA directly to coordinate the inspection and HAP contract.
+                          </p>
+                        </div>
+                      )}
+                    </div>
                   </div>
                 </div>
               )}
