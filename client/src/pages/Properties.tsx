@@ -32,9 +32,9 @@ export default function Properties() {
                 </div>
                 <div className="border-t pt-4">
                   <p className="text-[var(--luxe-gold)] font-bold text-lg">$2,500 - $4,200/mo</p>
-                  <button className="mt-3 w-full bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-semibold py-2 rounded transition-colors">
-                    Inquire Now
-                  </button>
+                  <a href="/apply" className="block mt-3 w-full bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-semibold py-2 rounded transition-colors text-center">
+                    Apply Now
+                  </a>
                 </div>
               </CardContent>
             </Card>
@@ -53,9 +53,9 @@ export default function Properties() {
                 </div>
                 <div className="border-t pt-4">
                   <p className="text-[var(--luxe-gold)] font-bold text-lg">$3,500 - $5,500/mo</p>
-                  <button className="mt-3 w-full bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-semibold py-2 rounded transition-colors">
-                    Inquire Now
-                  </button>
+                  <a href="/apply" className="block mt-3 w-full bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-semibold py-2 rounded transition-colors text-center">
+                    Apply Now
+                  </a>
                 </div>
               </CardContent>
             </Card>
@@ -74,9 +74,9 @@ export default function Properties() {
                 </div>
                 <div className="border-t pt-4">
                   <p className="text-[var(--luxe-gold)] font-bold text-lg">$2,800 - $3,800/mo</p>
-                  <button className="mt-3 w-full bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-semibold py-2 rounded transition-colors">
-                    Inquire Now
-                  </button>
+                  <a href="/apply" className="block mt-3 w-full bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-semibold py-2 rounded transition-colors text-center">
+                    Apply Now
+                  </a>
                 </div>
               </CardContent>
             </Card>
@@ -86,9 +86,12 @@ export default function Properties() {
 
       <section className="py-20 bg-gray-50">
         <div className="container max-w-4xl text-center">
-          <h2 className="text-3xl font-bold text-[var(--luxe-navy)] mb-6">Interested in Our Properties?</h2>
-          <p className="text-lg text-gray-700 mb-8">Contact us to learn more about available units or to discuss adding your property to our portfolio.</p>
-          <a href="/contact" className="inline-block bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-semibold px-8 py-4 rounded-lg transition-colors">Get in Touch</a>
+          <h2 className="text-3xl font-bold text-[var(--luxe-navy)] mb-6">Ready to Apply?</h2>
+          <p className="text-lg text-gray-700 mb-8">Complete our online rental application today. A $75 fee covers application processing and a comprehensive background &amp; credit check.</p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a href="/apply" className="inline-block bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-semibold px-8 py-4 rounded-lg transition-colors">Apply Online Now</a>
+            <a href="/contact" className="inline-block border-2 border-[var(--luxe-navy)] text-[var(--luxe-navy)] hover:bg-[var(--luxe-navy)] hover:text-white font-semibold px-8 py-4 rounded-lg transition-colors">Contact Us</a>
+          </div>
         </div>
       </section>
     </div>

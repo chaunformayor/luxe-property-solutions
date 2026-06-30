@@ -6,6 +6,7 @@ import { publicProcedure, router } from "./_core/trpc";
 import { adminRouter } from "./adminRouter";
 import { ownerRouter } from "./ownerRouter";
 import { tenantRouter } from "./tenantRouter";
+import { applicationRouter } from "./applicationRouter";
 import { createInquiry } from "./db";
 import { notifyOwner } from "./_core/notification";
 
@@ -14,6 +15,7 @@ export const appRouter = router({
   admin: adminRouter,
   owner: ownerRouter,
   tenant: tenantRouter,
+  application: applicationRouter,
 
   auth: router({
     me: publicProcedure.query(opts => opts.ctx.user),

@@ -187,6 +187,81 @@ export const documents = mysqlTable("documents", {
 export type Document = typeof documents.$inferSelect;
 export type InsertDocument = typeof documents.$inferInsert;
 
+// Rental Applications table
+export const rentalApplications = mysqlTable("rentalApplications", {
+  id: varchar("id", { length: 64 }).primaryKey(),
+
+  // Property of interest
+  propertyId: varchar("propertyId", { length: 64 }).references(() => properties.id),
+  propertyAddress: text("propertyAddress"),
+
+  // Personal information
+  firstName: varchar("firstName", { length: 100 }).notNull(),
+  lastName: varchar("lastName", { length: 100 }).notNull(),
+  email: varchar("email", { length: 320 }).notNull(),
+  phone: varchar("phone", { length: 20 }).notNull(),
+  dateOfBirth: varchar("dateOfBirth", { length: 20 }).notNull(),
+  ssn: varchar("ssn", { length: 20 }), // last 4 digits only for display
+
+  // Current address
+  currentAddress: text("currentAddress").notNull(),
+  currentCity: varchar("currentCity", { length: 100 }).notNull(),
+  currentState: varchar("currentState", { length: 2 }).notNull(),
+  currentZip: varchar("currentZip", { length: 10 }).notNull(),
+  currentLengthOfResidence: varchar("currentLengthOfResidence", { length: 50 }),
+  currentLandlordName: varchar("currentLandlordName", { length: 255 }),
+  currentLandlordPhone: varchar("currentLandlordPhone", { length: 20 }),
+  currentMonthlyRent: varchar("currentMonthlyRent", { length: 20 }),
+  reasonForLeaving: text("reasonForLeaving"),
+
+  // Employment
+  employmentStatus: mysqlEnum("employmentStatus", ["employed", "self_employed", "unemployed", "retired", "student"]).notNull(),
+  employerName: varchar("employerName", { length: 255 }),
+  employerPhone: varchar("employerPhone", { length: 20 }),
+  employerAddress: text("employerAddress"),
+  jobTitle: varchar("jobTitle", { length: 255 }),
+  monthsEmployed: int("monthsEmployed"),
+  monthlyIncome: varchar("monthlyIncome", { length: 20 }),
+  additionalIncome: varchar("additionalIncome", { length: 20 }),
+  additionalIncomeSource: text("additionalIncomeSource"),
+
+  // References (JSON)
+  references: json("references"), // [{name, phone, relationship}]
+
+  // Additional occupants (JSON)
+  additionalOccupants: json("additionalOccupants"), // [{name, age, relationship}]
+
+  // Pets
+  hasPets: boolean("hasPets").default(false),
+  petDetails: text("petDetails"),
+
+  // Background questions
+  hasEviction: boolean("hasEviction").default(false),
+  evictionDetails: text("evictionDetails"),
+  hasCriminalHistory: boolean("hasCriminalHistory").default(false),
+  criminalDetails: text("criminalDetails"),
+  hasBankruptcy: boolean("hasBankruptcy").default(false),
+  bankruptcyDetails: text("bankruptcyDetails"),
+
+  // Payment & status
+  applicationFee: decimal("applicationFee", { precision: 8, scale: 2 }).default("75.00"),
+  paymentStatus: mysqlEnum("paymentStatus", ["pending", "paid", "refunded"]).default("pending"),
+  stripePaymentIntentId: varchar("stripePaymentIntentId", { length: 255 }),
+  stripeClientSecret: varchar("stripeClientSecret", { length: 512 }),
+
+  // Review status
+  status: mysqlEnum("status", ["incomplete", "submitted", "under_review", "approved", "denied", "withdrawn"]).default("incomplete"),
+  reviewNotes: text("reviewNotes"),
+  reviewedBy: varchar("reviewedBy", { length: 64 }).references(() => users.id),
+  reviewedAt: timestamp("reviewedAt"),
+
+  createdAt: timestamp("createdAt").defaultNow(),
+  updatedAt: timestamp("updatedAt").defaultNow(),
+});
+
+export type RentalApplication = typeof rentalApplications.$inferSelect;
+export type InsertRentalApplication = typeof rentalApplications.$inferInsert;
+
 // Notifications table
 export const notifications = mysqlTable("notifications", {
   id: varchar("id", { length: 64 }).primaryKey(),

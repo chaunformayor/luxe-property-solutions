@@ -30,6 +30,8 @@ import TenantDocuments from "@/pages/TenantDocuments";
 import AdminLogin from "@/pages/AdminLogin";
 import OwnerLogin from "@/pages/OwnerLogin";
 import TenantLogin from "@/pages/TenantLogin";
+import Apply from "@/pages/Apply";
+import AdminApplications from "@/pages/AdminApplications";
 
 function App() {
   return (
@@ -43,6 +45,9 @@ function App() {
             <Route path={"/owner-login"} component={OwnerLogin} />
             <Route path={"/admin-login"} component={AdminLogin} />
             
+            {/* Application Route */}
+            <Route path={"/apply"} component={Apply} />
+
             {/* Admin Routes */}
             <Route path={"/admin"} component={AdminDashboard} />
             <Route path={"/admin/properties"} component={AdminProperties} />
@@ -50,6 +55,7 @@ function App() {
             <Route path={"/admin/maintenance"} component={AdminMaintenance} />
             <Route path={"/admin/payments"} component={AdminPayments} />
             <Route path={"/admin/users"} component={AdminUsers} />
+            <Route path={"/admin/applications"} component={AdminApplications} />
             
             {/* Owner Routes */}
             <Route path={"/owner"} component={OwnerDashboard} />
