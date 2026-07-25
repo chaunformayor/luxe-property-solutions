@@ -14,7 +14,15 @@ export default function Tenants() {
       <section className="bg-[var(--luxe-navy)] text-white py-20">
         <div className="container text-center">
           <h1 className="text-4xl md:text-6xl font-bold mb-6">For Tenants</h1>
-          <p className="text-xl max-w-3xl mx-auto">Experience exceptional service and quality living</p>
+          <p className="text-xl max-w-3xl mx-auto mb-8">Experience exceptional service and quality living</p>
+          <div className="flex gap-4 justify-center flex-wrap">
+            <a href="/apply" className="inline-block bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-bold px-8 py-4 rounded-lg transition-colors text-lg">
+              Apply Now
+            </a>
+            <a href="/properties" className="inline-block border-2 border-white/60 hover:border-white text-white font-semibold px-8 py-4 rounded-lg transition-colors text-lg">
+              View Properties
+            </a>
+          </div>
         </div>
       </section>
 
@@ -104,11 +112,14 @@ export default function Tenants() {
         </div>
       </section>
 
-      <section className="py-20">
+      <section className="py-20 bg-[var(--luxe-gold)]/10">
         <div className="container max-w-4xl text-center">
-          <h2 className="text-3xl font-bold text-[var(--luxe-navy)] mb-6">Looking for a New Home?</h2>
-          <p className="text-lg text-gray-700 mb-8">Browse our available properties or contact us to learn more about our rental communities.</p>
+          <h2 className="text-3xl font-bold text-[var(--luxe-navy)] mb-4">Ready to Find Your New Home?</h2>
+          <p className="text-lg text-gray-700 mb-8">Start your application online in minutes. A $75 fee covers processing and your background check.</p>
           <div className="flex gap-4 justify-center flex-wrap">
+            <a href="/apply" className="inline-block bg-[var(--luxe-navy)] hover:bg-[var(--luxe-navy)]/90 text-white font-bold px-10 py-4 rounded-lg transition-colors text-lg">
+              Apply Now
+            </a>
             <a href="/properties" className="inline-block bg-[var(--luxe-gold)] hover:bg-[var(--luxe-gold)]/90 text-[var(--luxe-navy)] font-semibold px-8 py-4 rounded-lg transition-colors">View Properties</a>
             <a href="/contact" className="inline-block border-2 border-[var(--luxe-navy)] hover:bg-[var(--luxe-navy)] hover:text-white text-[var(--luxe-navy)] font-semibold px-8 py-4 rounded-lg transition-colors">Contact Us</a>
           </div>
