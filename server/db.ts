@@ -89,16 +89,17 @@ export async function getUser(id: string) {
 
 // ============ ADMIN QUERIES ============
 
-import { 
-  properties, 
-  inquiries, 
-  maintenanceRequests, 
-  payments, 
-  tenants, 
+import {
+  properties,
+  inquiries,
+  maintenanceRequests,
+  payments,
+  tenants,
   units,
   invoices,
   subscriptions,
-  documents
+  documents,
+  rentalApplications
 } from "../drizzle/schema";
 import { count, sum, and, gte, lte } from "drizzle-orm";
 
@@ -566,6 +567,47 @@ export async function getTenantDocuments(tenantId: string) {
     console.error("[Database] Failed to get tenant documents:", error);
     throw error;
   }
+}
+
+// ============ RENTAL APPLICATION QUERIES ============
+
+export async function createRentalApplication(data: any) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  const id = `app_${Date.now()}_${Math.random().toString(36).substr(2, 9)}`;
+  await db.insert(rentalApplications).values({
+    id,
+    ...data,
+    createdAt: new Date(),
+    updatedAt: new Date(),
+  });
+  return id;
+}
+
+export async function getRentalApplicationById(id: string) {
+  const db = await getDb();
+  if (!db) return null;
+
+  const result = await db.select().from(rentalApplications).where(eq(rentalApplications.id, id)).limit(1);
+  return result.length > 0 ? result[0] : null;
+}
+
+export async function updateRentalApplication(id: string, data: any) {
+  const db = await getDb();
+  if (!db) throw new Error("Database not available");
+
+  await db.update(rentalApplications).set({
+    ...data,
+    updatedAt: new Date(),
+  }).where(eq(rentalApplications.id, id));
+}
+
+export async function getAllRentalApplications() {
+  const db = await getDb();
+  if (!db) return [];
+
+  return await db.select().from(rentalApplications).orderBy(rentalApplications.createdAt);
 }
 
 export async function getTenantStats(tenantId: string) {
